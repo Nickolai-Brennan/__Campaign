@@ -353,6 +353,7 @@ See `evals/evals.json` for test prompts. Run 2–3 prompts and compare outputs a
 3. Check that the skill prompts for intake questions before producing any output.
 4. Verify that no files outside `docs/` are created.
 5. Confirm each gate pauses for user approval.
+6. Use `agents/grader.md` to evaluate assertion pass/fail on any automated runs.
 
 ---
 
@@ -365,6 +366,35 @@ All document templates are stored in `templates/`. See:
 - `templates/organization/` — one template per organization file
 - `templates/gates/` — one template per gate checklist
 - `templates/handoff/build-agent-handoff.md`
+
+---
+
+## Bundled Resources
+
+### Instructions
+- `instructions/agent-instructions.md` — Full operational instructions for agents running
+  this skill (session startup, gate protocol, scope creep, contradiction handling, handoff)
+
+### Agents
+- `agents/phase-guide.md` — Phase map, gate criteria, and gate presentation format
+- `agents/research-agent.md` — Research execution instructions for Phase 2 (9 documents)
+- `agents/grader.md` — Eval grading agent: evaluates assertion pass/fail on skill outputs
+
+### References
+- `references/phase-reference.md` — Quick cheat sheet for all 8 phases, inputs, outputs, gates
+- `references/research-frameworks.md` — Structured frameworks for each of the 9 research areas
+- `references/planning-checklists.md` — Pre-phase verification checklists and common blockers
+
+### Assets
+- `assets/phase-diagram.md` — Visual phase flow diagram with gate legend and document counts
+- `assets/project-types-reference.md` — Quick reference for all project types, scoring guide,
+  complexity signals
+
+### Scripts
+- `scripts/validate_docs.py <docs_dir>` — Validates all 35 required documents exist and
+  are non-empty. Run before Phase 6.
+- `scripts/check_gates.py <docs_dir>` — Reads gate checklists and reports unchecked items.
+  Run before Phase 7.
 
 ---
 
