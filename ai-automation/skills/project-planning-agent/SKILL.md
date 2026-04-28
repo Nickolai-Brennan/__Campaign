@@ -1,16 +1,34 @@
 ---
 name: project-planning-agent
 description: |
-  Guides a project from rough idea to research, planning, organization, validation, and
-  build-readiness before any coding begins. Use this skill when a user has a new project
-  idea and needs structured help turning it into a clear, research-backed, approved plan
-  before any code, repo, scaffold, database, or automation is created. Common phrasings:
-  "I have a project idea", "help me plan my project", "let's plan this before we build",
-  "what should we figure out before starting", "turn my idea into a project plan",
-  "help me go from idea to plan", "project planning", "create a project brief". Do NOT
-  use when the user wants to start coding immediately (hand off to a build agent), when
-  a project plan already exists and the user wants to update it (use project-planning-skill),
-  or when the user only needs a single document like a PRD or brief (use project-planning-skill).
+  Full end-to-end project planning agent that takes a rough idea all the way through
+  research, planning, organization, and validation before any code is written. Use this
+  skill whenever a user has a new project idea and wants structured, phase-by-phase help
+  turning it into a complete, research-backed, approved plan — even if they don't explicitly
+  say "project planning". This is the right skill any time someone wants to think before
+  they build. Always trigger this skill for phrases like: "I have a project idea",
+  "help me plan my project", "let's plan this before we build", "what should I figure out
+  before starting", "turn my idea into a project plan", "help me go from idea to plan",
+  "project planning", "create a project brief", "I want to build a SaaS / app / tool /
+  website — where do I start?", "I have an idea but don't know where to begin",
+  "help me think through this idea", "should I build this?", "help me scope this project",
+  "I need a PRD and roadmap before we code anything", "let's research this idea first",
+  "what tech stack should I use for my new project?", "help me define my MVP",
+  "I want to validate this idea before writing code", "help me create a product plan",
+  "I need market research before I build", "help me organize my project before development
+  starts", "what do I need to know before I start building this?", "is this idea viable?",
+  "help me plan a startup / side project / internal tool from scratch". Also trigger when
+  the user is clearly pre-build and needs competitive analysis, user research, or opportunity
+  validation — even if they don't frame it as planning. The skill runs 8 sequential phases
+  (Intake → Classification → Research → Planning → Organization → Stack Decision →
+  Validation → Build Handoff), each gated by user approval, producing ~35 structured
+  documents across research/, planning/, organization/, gates/, and handoff/ folders.
+  Do NOT use when the user wants to start coding immediately (hand off to a build agent),
+  when a plan already exists and the user wants to update or extend it (use
+  project-planning-skill), when the user only needs a single document such as a PRD or
+  brief (use project-planning-skill), or when reviewing an existing codebase (use
+  code-review-skill). For lightweight single-output planning without approval gates,
+  prefer planning-agent instead.
 category: planning
 version: v2.0
 phase: IDEA → BUILD_HANDOFF
