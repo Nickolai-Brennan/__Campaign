@@ -1,0 +1,66 @@
+{
+  "skill_name": "project-planning-agent",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I have an idea for a SaaS tool that helps freelancers track their invoices and payments. I'm terrible at chasing clients for money and I know other freelancers are too. I don't know where to start — can you help me plan this out before I write any code?",
+      "expected_output": "Skill presents the 7 intake questions (project name, one-sentence idea, project type, target user, problem solved, simplest first version, primary use). After answers are provided, a project summary statement is produced in the format 'This project is a [type] for [user] that solves [problem] by [solution]. The simplest first version is: [MVP].' Gate is presented asking user to approve before Phase 1 begins. No documents, code, or file structures are created yet.",
+      "files": [],
+      "assertions": [
+        "Skill presents intake questions before producing any output document",
+        "Project summary follows the template format with project type, target user, problem, and solution",
+        "A gate checkpoint asks for user approval before advancing to Phase 1",
+        "No code, file structure, or tech stack is mentioned before research is complete"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Can we just skip the research phase? I already know my market and I just need a PRD and a build plan. My idea is a mobile app that lets dog owners book local dog walkers on demand, like Uber but for dog walking.",
+      "expected_output": "Skill acknowledges the user's request to skip research but warns that skipping increases build risk. It offers to document the skip in decision-log.md and asks for explicit confirmation before skipping. If the user confirms, it notes the skip and proceeds directly to Phase 3 Planning, but reminds the user that the opportunity-summary.md will be marked as 'skipped — user-confirmed'. It does not silently skip without documentation.",
+      "files": [],
+      "assertions": [
+        "Skill warns the user that skipping research increases build risk",
+        "Skill offers to document the skip decision in decision-log.md",
+        "Skill requires explicit confirmation before skipping the research phase",
+        "Skill does not silently bypass the gate without user acknowledgment"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We're in Phase 3 planning for my project (a B2B lead generation tool for real estate agents) and my stakeholder just asked if we could add a CRM integration, an email campaign builder, and a public API to the MVP. These weren't in the original scope. What should we do?",
+      "expected_output": "Skill identifies all three additions as scope creep. It flags each one as outside the approved MVP scope and explains why adding them now increases build risk and timeline. It does NOT add them to the current MVP. Instead, it suggests adding them to roadmap.md as Phase 2 items, documents the requests in decision-log.md, and asks the user whether to proceed with the original MVP or restart the MVP scope approval gate with the new scope. It does not expand the MVP without the user's explicit decision.",
+      "files": [],
+      "assertions": [
+        "Skill flags all three feature requests as out-of-MVP scope creep",
+        "Skill suggests adding the features to roadmap.md Phase 2 rather than the current MVP",
+        "Skill does not add the new features to mvp-scope.md without user approval",
+        "Skill offers to either proceed with original MVP or restart the MVP scope gate"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I want to build something but I'm not sure what yet. I've been thinking about either a newsletter summarizer, a habit tracker app, or a tool that helps small businesses write job postings. I have maybe 10 hours a week to work on this and I'm a solo developer. Which one should I build?",
+      "expected_output": "Skill recognizes this as a pre-planning scenario with multiple competing ideas. Rather than picking one, it presents the Phase 0 intake process and guides the user through narrowing down the options by asking: which idea solves a problem you personally experience, which has the clearest target user, and which fits a 10-hour/week solo developer constraint. It may briefly note tradeoffs between the options but ultimately leads the user to complete a project summary for their chosen idea before proceeding to research.",
+      "files": [],
+      "assertions": [
+        "Skill does not pick a project idea for the user without guiding them through intake",
+        "Skill acknowledges the time and solo-developer constraints as relevant scope factors",
+        "Skill initiates the Phase 0 intake process rather than jumping to planning",
+        "Skill asks clarifying questions to help the user choose before producing a summary"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "We've finished all 7 phases of planning for my e-commerce platform. All documents are done and approved. Can you generate the build-agent-handoff.md and tell me what to hand off to the engineering team?",
+      "expected_output": "Skill confirms it is in Phase 7 (Build Agent Handoff). It produces build-agent-handoff.md using the template in templates/handoff/build-agent-handoff.md, populating it with: approved project summary, MVP scope (in/out), selected stack, approved file structure, build order, must-build-first list, do-not-build-yet list, and known risks. It ends with the instruction that the build agent must not expand beyond the approved MVP without user approval. No code is generated — the handoff document is the final output.",
+      "files": [],
+      "assertions": [
+        "Skill produces build-agent-handoff.md using the correct template structure",
+        "Handoff document includes MVP scope with explicit in-scope and out-of-scope lists",
+        "Handoff document includes a build order table",
+        "Handoff document ends with an explicit instruction not to expand beyond approved MVP",
+        "No code, scaffolding, or implementation files are generated"
+      ]
+    }
+  ]
+}
